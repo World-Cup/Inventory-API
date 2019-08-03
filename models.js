@@ -1,7 +1,7 @@
- module.exports=()=>{
+module.exports = () => {
      const Sequelize = require("sequelize");
      const db = new Sequelize ("auth", "annaaombe","",{
-         host:"127.0.0.1",
+         host: "127.0.0.1",
          dialect: "postgres",
          logging: false
      });
@@ -41,6 +41,15 @@
             state:Sequelize.STRING,
             zipcode: Sequelize.STRING
         }),
+        Category: db.define("category",{
+            id:{
+                type: Sequelize.INTEGER.UNSIGNED,
+                autoIncrement: true,
+                primaryKey: true
+            },
+            name: Sequelize.STRING,
+
+        }),
         Product: db.define("product",{
             id:{
                 type: Sequelize.INTEGER.UNSIGNED,
@@ -58,16 +67,7 @@
             productname: Sequelize.STRING,
             productcondition: Sequelize.STRING,
             productcondition: Sequelize.STRING,
-            productimage: sequelize.STRING
-        }),
-        Category: db.define("category",{
-            id:{
-                type: Sequelize.INTEGER.UNSIGNED,
-                autoIncrement: true,
-                primaryKey: true
-            },
-            name: Sequelize.STRING,
-
+            productimage: Sequelize.STRING
         }),
         Quantity: db.define("quantity",{
             id:{
@@ -78,11 +78,13 @@
         }),
         Order: db.define("order",{
             id:{
-               type: Sequelize.INTEGER.UNSIGNED
+               type: Sequelize.INTEGER.UNSIGNED,
+               autoIncrement: true,
+               primaryKey: true
             }
         }),
         init: function(){
-            db.sync();
+            db.sync({force: true});
         }
      }
  }
