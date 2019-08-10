@@ -49,8 +49,7 @@ module.exports = () => {
             autoIncrement: true,
             primaryKey: true
         },
-        /*fk in recipients table 
-        create association in index.js requires db*/
+        //fk 
         recipient_id:{
             type: Sequelize.INTEGER,
             require: true,
@@ -85,10 +84,9 @@ module.exports = () => {
             type: Sequelize.INTEGER,
             require: true,
             allowNull: false,
-            //it's causing an error: but needs the productid
             references: {
-                model: Product,// 'Inventory' refers to table product
-                key: 'id', // 'id' refers to column name in product table
+                model: Product,
+                key: 'id', 
             }
         },
      });
@@ -104,10 +102,9 @@ module.exports = () => {
             type: Sequelize.INTEGER,
             require: true,
             allowNull: false,
-            //it's causing an error: but needs the productid
             references: {
-                model: Product,// 'Inventory' refers to table product
-                key: 'id', // 'id' refers to column name in product table
+                model: Product,
+                key: 'id', 
             }
         },
         donor_id:{
@@ -144,7 +141,7 @@ module.exports = () => {
             allowNull: false,
             references: {
                 model: Product,
-                key: 'id', 
+                key: 'id',
             }
         },
         //fk in order table
